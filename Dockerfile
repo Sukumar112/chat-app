@@ -2,8 +2,12 @@ FROM eclipse-temurin:17
 
 WORKDIR /app
 
-COPY . /app
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
 
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 EXPOSE 8080
